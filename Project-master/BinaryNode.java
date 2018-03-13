@@ -1,3 +1,8 @@
+//Francisco Praod
+//Project 2
+//csc130
+
+
 public class BinaryNode<AnyType>
 {
 // Constructors
@@ -34,16 +39,38 @@ public AnyType getData()
   return element;
 }
 
-public int getHeight()
+
+
+    /**
+     * Sets the left child of this node
+     *
+     * @param left The left child
+     */
+    public void setLeft(BinaryNode<AnyType> left)
     {
-        return height;
+        this.left = left;
     }
 
-    public void setHeight(int height)
+
+
+    /**
+     * Sets the right child of this node
+     *
+     * @param right The right child
+     */
+    public void setRight(BinaryNode<AnyType> right)
     {
-        this.height = height;
+        this.right = right;
     }
-
-
+	
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+	
+	public int getHeight()
+	{
+		return height;
+	}
 
 }

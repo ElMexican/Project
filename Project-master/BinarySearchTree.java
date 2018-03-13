@@ -1,8 +1,14 @@
+//Francisco Praod
+//Project 2
+//csc130
+
+ import java.util.Random;
  public class BinarySearchTree<AnyType extends Comparable<? super AnyType>>
  {
+public int counter = 0; //used to make sure random integers are unique
 
 
- private BinaryNode<AnyType> root;
+ protected BinaryNode<AnyType> root;
 
  public BinarySearchTree( )
  { root = null; }
@@ -28,7 +34,7 @@
  }
 
 
- private int height(BinaryNode<AnyType> t)
+ protected int height(BinaryNode<AnyType> t)
  {
    if( t == null)
     return -1;
@@ -37,14 +43,14 @@
  }
 
 
- public AnyType findMin( )
- { //if( isEmpty( ) )
-   //throw new UnderflowException( );
+ public AnyType findMin( ) 
+ { 
 
    return findMin( root ).element;
  }
  public AnyType findMax( )
- { //if( isEmpty( ) ) throw new UnderflowException( );
+ { 
+
  return findMax( root ).element;
  }
 
@@ -68,7 +74,7 @@
  * @param t the node that roots the subtree.
  * @return true if the item is found; false otherwise.
  */
- private boolean contains( AnyType x, BinaryNode<AnyType> t )
+ protected boolean contains( AnyType x, BinaryNode<AnyType> t )
  {
  if( t == null )
  return false;
@@ -119,7 +125,7 @@
  * @param t the node that roots the subtree.
  * @return the new root of the subtree.
  */
- private BinaryNode<AnyType> insert( AnyType x, BinaryNode<AnyType> t )
+ protected BinaryNode<AnyType> insert( AnyType x, BinaryNode<AnyType> t )
  {
 	if( t == null )
 		return new BinaryNode<>( x, null, null );
@@ -131,16 +137,18 @@
 	else if( compareResult > 0 )
 		t.right = insert( x, t.right );
 	else
-		; // Duplicate; do nothing
+	{
+		counter--;
+	}
 	return t;
  }
 
 
 
- private BinaryNode<AnyType> remove( AnyType x, BinaryNode<AnyType> t )
+ protected BinaryNode<AnyType> remove( AnyType x, BinaryNode<AnyType> t )
  {
 	if( t == null )
-		return t; // Item not found; do nothing
+		return null; 
 
 	int compareResult = x.compareTo( t.element );
 
